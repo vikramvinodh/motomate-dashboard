@@ -27,6 +27,7 @@ const EditBlogCategory = React.lazy(() => import('./blogs/EditBlogCategory'));
 const CreateBlogAuthor = React.lazy(() => import('./blogs/CreateBlogAuthor'));
 const EditBlogAuthor = React.lazy(() => import('./blogs/EditBlogAuthor'));
 
+const Logs = React.lazy(() => import('./access/Logs'));
 
 
 
@@ -132,6 +133,8 @@ function Main() {
 								<Route path="users/create-user" element={hasAccess(adminData && adminData.isadmin) ? (<CreateUser />) : (<Restrected />)} />
 								<Route path="users/edit-user/:id" element={hasAccess(adminData && adminData.isadmin) ? (<EditUser />) : (<Restrected />)} />
 								<Route path="/change-password" element={hasAccess(adminData && adminData.isadmin) ? (<ChangePassword />) : (<Restrected />)} />
+
+								<Route path="logs/user-logs" element={hasAccess(adminData && adminData.isadmin) ? (<Logs />) : (<Restrected />)} />
 
 								{/* products */}
 								<Route path="/products/add-product" element={hasAccess(adminData && adminData.isadmin) ? (<AddProduct />) : (<Restrected />)} />

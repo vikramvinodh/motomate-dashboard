@@ -1,8 +1,7 @@
 import { FaBlogger } from 'react-icons/fa';
 import { SiMicrosoftaccess } from 'react-icons/si';
 import { HiUsers } from 'react-icons/hi';
-import { MdPermMedia, MdLocationOn, MdAddHome, MdContentCopy, MdTextFormat, MdOutlineFeedback } from 'react-icons/md';
-import kandraLogo from '../public/kandraLogo.png';
+import { MdPermMedia, MdAddHome, } from 'react-icons/md';
 
 export const sidebarData = [
 	{
@@ -20,6 +19,16 @@ export const sidebarData = [
 			},
 			{
 				label: 'Product List',
+			},
+		],
+	},
+	{
+		label: 'Logs',
+		icon: <SiMicrosoftaccess fill="#7081b9" size={20} />,
+		flag: [0],
+		sublist: [
+			{
+				label: 'User logs',
 			},
 		],
 	},

@@ -48,7 +48,7 @@ function Product() {
         try {
             const response = await axios.delete(`${import.meta.env.VITE_URL}/products/${deleteData._id}`);
             if (response.status === 200) {
-                LogsFunction(`${DELET_USER} ${deleteData.username}`);
+                LogsFunction(`${DELET_USER} ${deleteData.name}`);
                 setUsers(users.filter(user => user._id !== deleteData._id));
                 setSuccess(true);
             } else {

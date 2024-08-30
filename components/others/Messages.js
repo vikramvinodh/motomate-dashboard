@@ -4,8 +4,8 @@ export const CREATED_USER = 'Created New User : '
 export const EDIT_USER = 'Changed Detials/Access for : '
 export const DELET_USER = 'Deleted :'
 
-export const CREATED_PRODUCT = 'New Productec created'
-export const UPDATED_PRODUCT = 'Updaated Product'
+export const CREATED_PRODUCT = 'New Product created: '
+export const UPDATED_PRODUCT = 'Updated Product: '
 
 // Media
 export const GALLERY = 'New Image Added'
