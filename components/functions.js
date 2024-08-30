@@ -122,6 +122,19 @@ export const fetchUsers = async () => {
     return response.users
 }
 
+export const fetchProdcuts = async () => {
+    let response = await fetch(`${import.meta.env.VITE_URL}/products`, {
+        method: 'GET',
+        headers: {
+            'auth-token': sessionStorage.getItem('token')
+        },
+
+    });
+
+    response = await response.json()
+    return response
+}
+
 /**
  * Gets admin data.
  *

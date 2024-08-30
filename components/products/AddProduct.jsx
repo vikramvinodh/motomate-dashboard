@@ -1,44 +1,73 @@
-import { useContext, useState } from 'react'
-import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
-import { useNavigate } from 'react-router-dom'
-import { AppContext } from '../Context'
-import Loading from '../others/Loading'
-import { LogsFunction } from '../functions'
-import { CREATED_USER } from '../others/Messages'
+import { useContext, useState, useEffect } from 'react';
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AppContext } from '../Context';
+import Loading from '../others/Loading';
+import { LogsFunction } from '../functions';
+import { CREATED_PRODUCT, UPDATED_PRODUCT } from '../others/Messages';
+import GalleryBtn from '../Media/GalleryBtn';
 
 function AddProduct() {
-    const { adminData } = useContext(AppContext)
-    const [formState, setformState] = useState({ isadmin: '', userStatus: 'active', email: '', username: '', password: '' })
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState({})
-    const navigate = useNavigate()
+    const { adminData } = useContext(AppContext);
+    const [formState, setFormState] = useState({ price: '', name: '', description: '', image: '' });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState({});
+    const navigate = useNavigate();
+    const { id } = useParams();
 
-    const handleChange = event => {
+    useEffect(() => {
+        if (id) {
+            setLoading(true);
+            fetch(`${import.meta.env.VITE_URL}/products/${id}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': sessionStorage.getItem('token'),
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    setFormState({
+                        name: data.name || '',
+                        price: data.price || '',
+                        description: data.description || '',
+                        image: data.image || '',
+                    });
+                    setLoading(false);
+                })
+                .catch(() => {
+                    setLoading(false);
+                    alert('Failed to load product data');
+                });
+        }
+    }, [id]);
+
+    const handleChange = (event) => {
         const { name, value } = event.target;
-        setError(prevError => ({ ...prevError, [name]: '' }));
-        setformState(prevState => ({ ...prevState, [name]: value }));
+        setError((prevError) => ({ ...prevError, [name]: '' }));
+        setFormState((prevState) => ({ ...prevState, [name]: value }));
     };
 
-    const handleSubmit = async event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const { email, password, username, isadmin, userStatus } = formState;
+        const { name, price, description, image } = formState;
 
         // Perform validation
         const errors = {};
-        if (!username) {
-            errors.username = "Full Name is required";
+        if (!name) {
+            errors.name = 'Product Name is required';
         }
-        if (!email) {
-            errors.email = "Email is required";
-        } else if (!/\S+@\S+\.\S+/.test(email)) {
-            errors.email = "Invalid email address";
+        if (!price) {
+            errors.price = 'Price is required';
+        } else if (isNaN(price)) {
+            errors.price = 'Price must be a number';
         }
-        if (!password) {
-            errors.password = "Password is required";
+        if (!description) {
+            errors.description = 'Description is required';
         }
-        if (isadmin === '') {
-            errors.isadmin = "Select one option";
+        if (!image) {
+            errors.image = 'Image URL is required';
         }
 
         if (Object.keys(errors).length > 0) {
@@ -48,69 +77,109 @@ function AddProduct() {
 
         setLoading(true);
 
-        const respons = await fetch(`${import.meta.env.VITE_URL}/auth/register`, {
-            method: 'POST',
+        const url = id
+            ? `${import.meta.env.VITE_URL}/products/${id}`
+            : `${import.meta.env.VITE_URL}/products`;
+
+        const method = id ? 'PUT' : 'POST';
+
+        const response = await fetch(url, {
+            method,
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': sessionStorage.getItem('token')
+                'auth-token': sessionStorage.getItem('token'),
             },
-
-            body: JSON.stringify({ email, password, username, isadmin, userStatus })
+            body: JSON.stringify({ name, price, description, image }),
         });
-        const data = await respons.json();
 
-        if (data.success === 'true') {
-            setLoading(false)
-            LogsFunction(CREATED_USER + username)
-            navigate('../users')
+        const data = await response.json();
+
+        setLoading(false);
+
+        if (response.status === 201) {
+            LogsFunction(id ? UPDATED_PRODUCT + name : CREATED_PRODUCT + name);
+            navigate('../products/product-list');
         } else {
-            setLoading(false)
-            return alert("'There was a problem creating User'")
+            alert('There was a problem saving the product');
         }
-    }
+    };
 
     return (
         <div className="create-user">
             <div className="create-user-container">
-                <div className="d-flex align-items-center  ">
-                    <button onClick={() => navigate(-1)} className='me-3 clearbtn'>
-                        <BsFillArrowLeftCircleFill fill='#0c213a' size={25} style={{ cursor: 'pointer' }} />
+                <div className="d-flex align-items-center">
+                    <button onClick={() => navigate(-1)} className="me-3 clearbtn">
+                        <BsFillArrowLeftCircleFill fill="#0c213a" size={25} style={{ cursor: 'pointer' }} />
                     </button>
-                    <h5 className=" m-0 text-center">Add Product</h5>
+                    <h5 className="m-0 text-center">{id ? 'Edit Product' : 'Add Product'}</h5>
                 </div>
-                {loading ? <Loading /> :
-
+                {loading ? (
+                    <Loading />
+                ) : (
                     <form onSubmit={handleSubmit}>
                         <div className="input-grp">
-                            <label className='col-3' >Product Name :</label>
-                            <input type="text" name="username" className='input-text' onChange={handleChange} />
+                            <label className="col-3">Product Name:</label>
+                            <input
+                                type="text"
+                                name="name"
+                                className="input-text"
+                                value={formState.name}
+                                onChange={handleChange}
+                            />
+                            {error.name && <p className="text-danger">{error.name}</p>}
                         </div>
 
-                        <center>{error.username && <p className="text-danger">{error.username}</p>}</center>
                         <div className="input-grp">
-                            <label className='col-3' >Description :</label>
-                            <input type="password" name="password" className='input-text' onChange={handleChange} />
-
+                            <label className="col-3">Description:</label>
+                            <input
+                                type="text"
+                                name="description"
+                                className="input-text"
+                                value={formState.description}
+                                onChange={handleChange}
+                            />
+                            {error.description && <p className="text-danger">{error.description}</p>}
                         </div>
+
                         <div className="input-grp">
-                            <label className='col-3' >Price :</label>
-                            <input type="password" name="password" className='input-text' onChange={handleChange} />
-
+                            <label className="col-3">Price:</label>
+                            <input
+                                type="text"
+                                name="price"
+                                className="input-text"
+                                value={formState.price}
+                                onChange={handleChange}
+                            />
+                            {error.price && <p className="text-danger">{error.price}</p>}
                         </div>
-                        <center>{error.password && <p className="text-danger">{error.password}</p>}</center>
+
+                        <GalleryBtn />
+
                         <div className="input-grp">
-                            <label htmlFor="" className='col-3'>Add Image</label>
-                            <input type='text' placeholder='add image' className='input-text'/>
+                            <label className="col-3">Add Image</label>
+                            <input
+                                type="text"
+                                name="image"
+                                placeholder="Image URL"
+                                className="input-text"
+                                value={formState.image}
+                                onChange={handleChange}
+                            />
+                            {error.image && <p className="text-danger">{error.image}</p>}
                         </div>
 
-                        <button className="purplebtn mt-3" type='submit' disabled={adminData && adminData.isadmin === 1 ? true : false}>Submit</button>
+                        <button
+                            className="purplebtn mt-3"
+                            type="submit"
+                            disabled={adminData && adminData.isadmin === 1}
+                        >
+                            {id ? 'Update' : 'Submit'}
+                        </button>
                     </form>
-
-                }
-
+                )}
             </div>
         </div>
-    )
+    );
 }
 
 export default AddProduct;

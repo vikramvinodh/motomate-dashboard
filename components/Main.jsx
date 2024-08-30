@@ -6,6 +6,7 @@ import { sidebarData } from './SidebarData';
 import Restrected from './others/Restrected';
 import StickyBottom from './others/StickyBottom';
 import Loading from './others/Loading'
+import Product from './products/Product';
 
 const Navbar = React.lazy(() => import('./Navbar'));
 const Side = React.lazy(() => import('./Side'));
@@ -13,9 +14,9 @@ const UsersList = React.lazy(() => import('./users/UsersList'));
 const Login = React.lazy(() => import('./authorization/Login'));
 const CreateUser = React.lazy(() => import('./users/CreateUser'));
 const EditUser = React.lazy(() => import('./users/EditUser'));
-const About = React.lazy(() => import('./others/About'));
+const Gallery = React.lazy(() => import('./Media/Gallery'));
 const ChangePassword = React.lazy(() => import('./authorization/ChangePassword'));
-const AddProduct = React.lazy(()=>  import('../components/products/AddProduct'));
+const AddProduct = React.lazy(() => import('../components/products/AddProduct'));
 const ManageBlogs = React.lazy(() => import('./blogs/ManageBlogs'));
 const ManageAuthors = React.lazy(() => import('./blogs/ManageAuthors'));
 const CreateBlog = React.lazy(() => import('./blogs/CreateBlog'));
@@ -131,7 +132,11 @@ function Main() {
 								<Route path="users/create-user" element={hasAccess(adminData && adminData.isadmin) ? (<CreateUser />) : (<Restrected />)} />
 								<Route path="users/edit-user/:id" element={hasAccess(adminData && adminData.isadmin) ? (<EditUser />) : (<Restrected />)} />
 								<Route path="/change-password" element={hasAccess(adminData && adminData.isadmin) ? (<ChangePassword />) : (<Restrected />)} />
+
+								{/* products */}
 								<Route path="/products/add-product" element={hasAccess(adminData && adminData.isadmin) ? (<AddProduct />) : (<Restrected />)} />
+								<Route path="/products/add-product/:id" element={hasAccess(adminData && adminData.isadmin) ? (<AddProduct />) : (<Restrected />)} />
+								<Route path="/products/product-list" element={hasAccess(adminData && adminData.isadmin) ? (<Product />) : (<Restrected />)} />
 
 								{/* Blogs Routes */}
 								<Route path="blog/articles" element={hasAccess(adminData && adminData.isadmin) ? (<Articles />) : (<Restrected />)} />
@@ -145,6 +150,12 @@ function Main() {
 								<Route path="blog/manage-authors/author" element={hasAccess(adminData && adminData.isadmin) ? (<CreateBlogAuthor />) : (<Restrected />)} />
 								<Route path="blog/manage-authors/edit-author/:id" element={hasAccess(adminData && adminData.isadmin) ? (<EditBlogAuthor />) : (<Restrected />)} />
 
+								<Route path="media" element={hasAccess(adminData && adminData.isadmin) ? (<Gallery />) : (<Restrected />)} />
+
+								{/* other routes */}
+								{isGalleryPage && (
+									<Route path="/pop-gallery" element={<Gallery />} />
+								)}
 							</Routes>
 						</Suspense>
 					</div>
