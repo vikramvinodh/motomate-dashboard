@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /undefined/
+Disallow: /search?q=
+Disallow: /cart
+Disallow: /*/cart
+Disallow: /cart/*
+Disallow: /payment
+Disallow: /*/payment

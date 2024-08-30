@@ -1,0 +1,939 @@
+* {
+    font-family: "Rubik", sans-serif;
+    font-display: swap;
+    --dark: #0c213a;
+    --purple: #6374ff;
+    --gray: #708295;
+    --text: #2c3652;
+    --green: #03d87f;
+    --border: #e1e4eb;
+    --red: #ef2020;
+    --yellow: #ffb822;
+}
+
+@media (max-width: 590px) {
+
+    ::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .pagination {
+        font-size: 12px;
+
+        span {
+            display: none;
+        }
+    }
+
+    .sidebar {
+
+        aside {
+            .clearbtn {
+                h6 {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .main-container {
+
+
+            .navbar {
+                padding: 0.5rem !important;
+
+                .darkbtn {
+                    margin-right: 1rem !important;
+                }
+
+                h5 {
+                    font-size: 12px;
+                }
+
+                .clearbtn {
+                    svg {
+                        margin-right: 0 !important;
+                        width: 20px;
+                    }
+                }
+
+                .dropdown-menu {
+                    .dropdown-item {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .category-dashboard {
+                padding: 1rem;
+
+                .category-container {
+                    width: 100%;
+                    overflow-x: scroll;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .mobile-category-board {
+                        width: 90%;
+                        display: block;
+                        height: fit-content;
+                        padding: 1rem;
+                        font-weight: 600;
+                        color: var(--text);
+                    }
+
+                    .course-board {
+                        margin: 0rem !important;
+                        width: 100%;
+
+                        .course-board-header {
+                            flex-direction: column;
+                            padding: 0.7rem;
+
+                            p {
+                                margin: 0.5rem 0rem;
+                            }
+
+                            .search {
+                                width: 100%;
+
+                                .search-bar {
+                                    width: 100%;
+                                }
+                            }
+                        }
+
+                        .course-board-body {
+                            padding: 1rem;
+                            height: calc(100vh - 17rem);
+
+                            .course-board-item {
+                                padding: 0.5rem;
+                                margin: 0.5rem 0;
+                                border-radius: 5px;
+                                font-size: 12px;
+                                border: 1px solid var(--border);
+
+
+                                .category-icon {
+                                    display: none;
+                                }
+
+                                .purplebtn {
+                                    margin: 1rem 1rem 1rem 2rem;
+                                }
+                            }
+                        }
+                    }
+
+
+                    .category-board {
+                        display: none;
+                    }
+                }
+            }
+
+
+            .location-dashboard {
+                padding: 1rem;
+
+                .location-bulk {
+                    padding: 1rem;
+                    font-size: 14px;
+                }
+
+                .location-panel {
+                    flex-direction: column;
+
+                    .mobile-location-board {
+                        display: block;
+                    }
+
+                    .country-panel {
+                        display: none;
+                    }
+
+                    .city-panel {
+                        margin: 0 !important;
+
+                        .city-panel-header {
+                            flex-direction: column;
+
+                            .d-flex {
+                                margin: 0.7rem 0rem;
+                            }
+                        }
+
+                        .city-panel-body {
+                            height: calc(100vh - 21.5rem);
+
+                            .city-panel-item {
+                                padding: 0.7rem 0rem;
+
+                                .category-icon {
+                                    margin: 0rem 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            .users-list {
+                padding: 1rem;
+
+                .users-container {
+                    .users-body {
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        padding: 0.7rem;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+                                    td {
+                                        padding: 0.7rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            .course-container {
+                padding: 1rem !important;
+                overflow-y: scroll;
+                height: 100%;
+
+                .d-flex {
+                    justify-content: center !important;
+                }
+
+                .course-box {
+                    padding: 1rem;
+                    margin: 0.5rem;
+                    height: 100px;
+                    width: 90%;
+
+                    h6 {
+                        font-size: 14px;
+                    }
+
+                    .course-box-icon {
+                        svg {
+                            width: 30px;
+                        }
+                    }
+                }
+            }
+
+            .course-list {
+                padding: 1rem;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .course-list-panel {
+                    margin-top: 1.5rem;
+
+                    .course-list-header {
+                        flex-direction: column;
+
+                        select,
+                        .search {
+                            width: 100% !important;
+
+                            .search-bar {
+                                width: 100%;
+                                margin: 0.5rem 0rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+            .bulk-pages {
+                padding: 0 0;
+                height: 100%;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .bulk-pages-container {
+                    height: calc(100vh - 5rem);
+                    padding: 1rem;
+
+                    .bulk-pages-header {
+                        display: none;
+                    }
+
+                    .bulk-pages-body {
+                        padding: 0;
+
+                        .input-grp {
+                            font-size: 12px;
+
+                            input,
+                            select {
+                                padding: 0.2rem;
+                                font-size: 12px;
+                            }
+                        }
+
+                        .benifits-section {}
+
+                        .container {
+                            min-width: 100% !important;
+
+                            .quill {
+                                width: 100%;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+
+            .bulk-update {
+                padding: 1rem;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .upload-template {
+                    margin-top: 2rem !important;
+                    padding: 1rem;
+                }
+
+
+            }
+
+            .static-content {
+                padding: 1rem;
+                height: 100%;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .static-content-container {
+                    margin-top: 1.5rem !important;
+                    padding: 1rem;
+                    height: calc(100vh - 9rem);
+
+                    .input-grp {
+                        font-size: 12px;
+
+                        .input-text {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+
+            .pattern-pages {
+                padding: 0;
+                overflow-y: scroll;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .pattern-pages-container {
+
+                    .pattern-header {
+                        flex-direction: column;
+
+                        a {
+                            display: none;
+                        }
+
+                        .input-text {
+                            padding: 0.4rem;
+                            font-size: 12px;
+                        }
+
+                        .search {
+                            input {
+                                padding: 0.5rem;
+                            }
+                        }
+                    }
+
+                    .pattern-body {
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        padding: 0.7rem;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+                                    td {
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .delete-page {
+                padding: 1rem;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .delete-pages-container {
+                    margin-top: 1rem;
+
+                    .delete-pages-body {
+                        height: calc(100vh - 14rem);
+
+                    }
+                }
+            }
+
+            .media-container {
+                padding: 1rem;
+
+                .gallery-box {
+                    width: 90%;
+                    height: 100px;
+
+                    h6 {
+                        font-size: 15px;
+                    }
+
+                    .gallery-box-icon {
+                        svg {
+                            width: 30px;
+                        }
+                    }
+                }
+            }
+
+
+            .gallery-container {
+                padding: 1rem;
+
+                h4 {
+                    display: none;
+                }
+
+                input {
+                    width: 60%;
+                }
+
+                .gallery-box {
+                    margin-right: 0.5rem;
+                    margin-left: 0.5rem;
+                    margin-top: 1rem;
+                    height: calc(100vh - 9rem);
+
+                    .gallery-box-item {
+                        width: 100px;
+                        height: 100px;
+
+                        img {
+                            width: 150px;
+                        }
+                    }
+                }
+            }
+
+            .gallery-upload {
+                padding: 1rem;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .upload-template {
+                    margin-top: 2rem !important;
+                    padding: 1rem;
+                    font-size: 12px;
+
+                    .d-flex {
+                        flex-direction: column;
+                        margin-top: 1rem;
+                    }
+
+                    h6 {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .testimonial-list {
+                padding: 0;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .testimonial-list-container {
+
+                    .testimonial-list-header {
+                        .purplebtn {
+                            padding: 0.5rem;
+                        }
+                    }
+
+                    .testimonial-list-body {
+                        height: calc(100vh - 13rem);
+
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+                                    td {
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .create-testimonials {
+                padding: 1rem;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .create-testimonials-container {
+                    margin-top: 1rem;
+                    height: calc(100vh - 9rem);
+
+                    .input-text {
+                        font-size: 14px;
+                    }
+
+                    .w-50 {
+                        width: 100% !important;
+                    }
+
+                    input,
+                    textarea {
+                        width: 100% !important;
+                    }
+
+                    select {
+                        width: 90%;
+                    }
+                }
+            }
+
+            .testimonial {
+                overflow-y: scroll;
+
+                .testimonial-container {
+                    margin-top: 1rem;
+                    justify-content: center;
+
+                    .testimonial-box {
+                        width: 100%;
+                        height: 100px;
+                    }
+                }
+            }
+
+            .bulkupload-testimonials {
+                padding: 1rem;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .upload-template {
+                    margin-top: 2rem !important;
+                    font-size: 12px;
+                    padding: 1rem;
+
+                    h6 {
+                        font-size: 14px;
+                    }
+
+                    .d-flex {
+                        flex-direction: column;
+                        margin-top: 1rem;
+                        align-items: start !important;
+                    }
+                }
+
+                .greenbtn {
+                    width: 100%;
+                    margin: auto;
+                    margin-top: 1rem;
+                    padding: 0.5rem;
+                }
+            }
+
+            .trainers-list {
+                padding: 0;
+
+                h4 {
+                    display: none;
+                }
+
+                .trainers-list-container {
+                    margin-top: 0;
+
+                    ::-webkit-scrollbar {
+                        height: 5px;
+                    }
+
+                    .trainers-list-header {
+                        .search {
+                            width: 70%;
+
+                            .search-bar {
+                                width: 100%;
+                            }
+                        }
+
+                        padding: 0.7rem;
+                    }
+
+                    .trainers-list-body {
+                        height: calc(100vh - 11rem);
+
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        padding: 0.5rem;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+                                    td {
+                                        font-size: 12px;
+
+                                        img,
+                                        svg {
+                                            width: 50px;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            .trainer {
+                padding: 1rem;
+
+                .d-flex {
+                    justify-content: center;
+
+                    .trainer-box {
+                        width: 90%;
+                        height: 100px;
+                    }
+                }
+
+            }
+
+            .create-trainer {
+                padding: 0;
+
+                .create-trainer-header {
+                    display: none;
+                }
+
+                .create-trainer-container {
+                    height: calc(100vh - 6rem);
+                    padding: 1rem;
+
+                    .create-trainer-body {
+                        padding: 0;
+
+                        .input-grp {
+                            label {
+                                font-size: 12px;
+                                width: 30%;
+                            }
+
+                            .input-text {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .schedules-list {
+                padding: 0;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .schedules-list-container {
+
+                    .schedules-list-header {
+                        .search {
+                            width: 25%;
+
+                            input,
+                            select {
+                                font-size: 12px;
+                                padding: 0.2rem;
+                            }
+
+                            svg {
+                                display: none;
+                            }
+
+                            .search-bar {
+                                width: 100%;
+                                font-size: 13px;
+                            }
+                        }
+
+                        select {
+                            font-size: 14px;
+                        }
+
+                        .purplebtn {
+                            padding: 0.5rem;
+                            font-size: 10px;
+                        }
+                    }
+
+
+                    .schedules-list-body {
+                        height: calc(100vh - 15rem);
+
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .create-schedules {
+                padding: 0;
+
+                .create-schedules-container {
+                    width: 100%;
+                    padding: 1rem 0;
+                    height: calc(100vh - 5rem);
+
+                    label {
+                        font-size: 12px;
+                    }
+
+                    .create-schedules-header {
+                        display: none !important;
+                    }
+
+                    input,
+                    select {
+                        font-size: 12px;
+                        padding: 0.3rem;
+                        width: 60%;
+                    }
+                }
+            }
+
+            .schedules {
+                padding: 1rem;
+
+                .d-flex {
+                    justify-content: center;
+
+                    .schedule-box {
+                        width: 90%;
+                        height: 100px;
+                    }
+                }
+            }
+
+            .bulkupload-schedules {
+                padding: 1rem;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .upload-template {
+                    margin-top: 2rem !important;
+                    padding: 1rem;
+                    font-size: 12px;
+
+                    h6 {
+                        font-size: 14px;
+                    }
+
+                    .d-flex {
+                        flex-direction: column;
+                        align-items: start !important;
+                        margin-top: 2rem;
+                    }
+                }
+
+                .greenbtn {
+                    padding: 0.5rem;
+                    width: 100%;
+                    margin: auto;
+                    margin-top: 1rem;
+                }
+            }
+
+            .leads {
+                padding: 0;
+
+                .leads-container {
+                    height: calc(100vh - 5rem);
+
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    padding: 0.5rem;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                td {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .articles {
+                padding: 1rem;
+
+                h4 {
+                    font-size: 15px;
+                }
+
+                .articles-list-container {
+
+                    .articles-list-body {
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        padding: 1rem;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+                                    td {
+                                        padding: 1rem;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .secret-keys {
+                padding: 1rem;
+
+                .secret-key-container {
+                    margin-top: 1rem;
+
+                    .secret-key-header {
+                        select {
+                            width: 100% !important;
+                            margin: auto;
+                        }
+                    }
+
+                    .secret-key-body {
+                        height: calc(100vh - 14rem);
+
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        padding: 0.5rem;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+                                    td {
+                                        padding: 0.5rem;
+                                        font-size: 12px;
+
+                                        .greenbtn {
+                                            svg {
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .green-alert {
+                right: 10%;
+                left: 10%;
+                font-size: 13px;
+            }
+        }
+
+    }
+}

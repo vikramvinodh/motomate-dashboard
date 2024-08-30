@@ -1,0 +1,17 @@
+# Use a Node.js base image suitable for your project
+FROM node:20.12.1-alpine
+
+WORKDIR /usr/src/app
+
+COPY . /usr/src/app
+
+RUN rm -rvf node_modules
+
+RUN npm install --silent
+
+RUN npm run build
+
+EXPOSE 3000
+
+# Command to start the Vite development server
+CMD ["npm", "run", "preview"]

@@ -1,0 +1,6 @@
+# Use a Node.js base image suitable for your project
+FROM node:21-alpine3.18
+
+# Set the working directory
+WORKDIR /usr/src/app
+
